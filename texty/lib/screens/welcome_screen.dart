@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:texty/screens/login_screen.dart';
+import 'package:texty/screens/registration_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
+  static String welcomeId = "welcomeScreen";
+
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
@@ -42,7 +46,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 borderRadius: BorderRadius.circular(30.0),
                 child: MaterialButton(
                   onPressed: () {
-                    //Go to login screen.
+                    Navigator.pushNamed(context, LoginScreen.Id);
                   },
                   minWidth: 200.0,
                   height: 42.0,
@@ -60,7 +64,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 elevation: 5.0,
                 child: MaterialButton(
                   onPressed: () {
-                    //Go to registration screen.
+                    Navigator.pushNamed(context, RegistrationScreen.Id);
                   },
                   minWidth: 200.0,
                   height: 42.0,
