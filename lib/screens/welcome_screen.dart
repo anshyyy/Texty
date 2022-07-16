@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:texty/screens/login_screen.dart';
 import 'package:texty/screens/registration_screen.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:texty/widgets/mainbutton.dart';
 
 class WelcomeScreen extends StatefulWidget {
   static String welcomeId = "welcomeScreen";
@@ -21,7 +23,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
         AnimationController(duration: const Duration(seconds: 3), vsync: this);
     // animation = CurvedAnimation(parent: controller, curve: Curves.decelerate);
     animation =
-        ColorTween(begin: Colors.red, end: Colors.blue).animate(controller);
+        ColorTween(begin: Colors.grey, end: Colors.white).animate(controller);
 
     controller.forward();
 
@@ -35,7 +37,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
 
     controller.addListener(() {
       setState(() {});
-      print(animation.value);
     });
   }
 
@@ -57,13 +58,16 @@ class _WelcomeScreenState extends State<WelcomeScreen>
           children: <Widget>[
             Row(
               children: <Widget>[
-                Container(
-                  child: Image.asset('images/logo.png'),
-                  height: 60.0,
+                Hero(
+                  tag: 'logo',
+                  child: Container(
+                    child: Image.asset('images/logo.png'),
+                    height: 60.0,
+                  ),
                 ),
-                const Text(
-                  'Texty',
-                  style: TextStyle(
+                TypewriterAnimatedTextKit(
+                  text: ['Teexxtyy '],
+                  textStyle: TextStyle(
                       fontSize: 45.0,
                       fontWeight: FontWeight.w900,
                       color: Colors.black),
@@ -73,24 +77,12 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             SizedBox(
               height: 48.0,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                elevation: 5.0,
-                color: Colors.lightBlueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                child: MaterialButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, LoginScreen.Id);
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text(
-                    'Log In',
-                  ),
-                ),
-              ),
-            ),
+            mainButton(
+                colour: Colors.lightBlueAccent,
+                title: "Log in",
+                onPressed: () {
+                  Navigator.pushNamed(context, LoginScreen.Id);
+                }),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 16.0),
               child: Material(
