@@ -28,7 +28,10 @@ class mainButton extends StatelessWidget {
           },
           minWidth: 200,
           height: 42,
-          child: Text(title),
+          child: Text(
+            title,
+            style: TextStyle(color: Colors.white),
+          ),
         ),
       ),
     );

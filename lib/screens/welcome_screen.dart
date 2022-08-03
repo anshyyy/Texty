@@ -77,12 +77,25 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             SizedBox(
               height: 48.0,
             ),
-            mainButton(
-                colour: Colors.lightBlueAccent,
-                title: "Log in",
-                onPressed: () {
-                  Navigator.pushNamed(context, LoginScreen.Id);
-                }),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 16.0),
+              child: Material(
+                color: Colors.lightBlueAccent,
+                borderRadius: BorderRadius.circular(30.0),
+                elevation: 5.0,
+                child: MaterialButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, LoginScreen.Id);
+                  },
+                  minWidth: 200.0,
+                  height: 42.0,
+                  child: Text(
+                    'Login',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
+            ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 16.0),
               child: Material(
@@ -97,6 +110,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   height: 42.0,
                   child: Text(
                     'Register',
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
               ),
